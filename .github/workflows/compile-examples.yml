@@ -49,7 +49,7 @@ jobs:
           - fqbn: arduino:samd:mkrzero
             platforms: |
               - name: arduino:samd
-          - fqbn: arduino:mbed_portenta:envie_m4
+          - fqbn: arduino:mbed_portenta:envie_m7:target_core=cm4
             platforms: |
               - name: arduino:mbed_portenta
           - fqbn: arduino:mbed_portenta:envie_m7
@@ -64,7 +64,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Compile examples
         uses: arduino/compile-sketches@v1
@@ -83,7 +83,7 @@ jobs:
           sketches-report-path: ${{ env.SKETCHES_REPORTS_PATH }}
 
       - name: Save sketches report as workflow artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           if-no-files-found: error
           path: ${{ env.SKETCHES_REPORTS_PATH }}
